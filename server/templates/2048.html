@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2048 Game</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Stylesheet-->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/2048.css')}}" />
+  </head>
+  <body>
+    <div class="container hide">
+      <div class="heading">
+        <h1>2048</h1>
+        <div class="score-container">
+          Score:
+          <span id="score">0</span>
+        </div>
+      </div>
+      <div class="grid"></div>
+    </div>
+    <div class="cover-screen">
+      <h2 id="over-text" class="hide">Game Over</h2>
+      <p id="result"></p>
+      <button id="start-button">Start Game</button>
+    </div>
+    <!-- Script -->
+    <script src="{{ url_for('static', filename='js/2048.js') }}"></script>
+  </body>
+</html>

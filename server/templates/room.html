@@ -1,0 +1,129 @@
+{% extends 'base.html' %} {% block content %}
+<div class="message-box">
+  <h2>Chat Room: {{code}}</h2>
+  <div class="messages" id="messages"></div>
+  <div class="inputs">
+    <input
+      type="text"
+      rows="3"
+      placeholder="Message"
+      name="message"
+      id="message"
+    />
+    <button
+      type="button"
+      name="send"
+      class="msgbtn"
+      id="send-btn"
+      onclick="sendMessage()"
+    >
+      Send
+    </button>
+    <div class="dropdown">
+      <button onclick="dropdown()" id="dropbtn" class="msgbtn">Games</button>
+      <div id="myDropdown" class="dropdown-content">
+        <button type="button" name="2048" id="2048" onclick="init2048()">2048</button>
+        <button type="button" name="WIP" id="WIP">To be Added!</button>
+        <button type="button" name="WIP" id="WIP">To be Added!</button>
+      </div>
+    </div>
+  </div>
+</div>
+<form action="/"><button type="submit">Leave Room</button></form>
+<script type="text/javascript">
+  var socketio = io();
+
+  const messages = document.getElementById("messages");
+
+  const createMessage = (name, msg) => {
+    const content = `
+            <div class="text">
+                <span>
+                    <strong>${name}</strong>: ${msg}
+                </span
+                <span class="muted">
+                    ${new Date().toLocaleString()}
+                </span>
+            <div>
+                `;
+    messages.innerHTML += content;
+  };
+
+  const createStartGameMessage = (name, game) => {
+    const content = `
+            <div class="text">
+                <span>
+                    <strong>${name}</strong>:
+                    <a href="http://127.0.0.1:5000/games/2048" target="_blank">Lets play ${game}!</a>
+                </span
+                <span class="muted">
+                    ${new Date().toLocaleString()}
+                </span>
+            <div>
+                `;
+    messages.innerHTML += content;
+  };
+
+  const createGameMessage = (name, score) => {
+    const content = `
+            <div class="text">
+                <span>
+                    <strong>Server</strong>: <strong><i>${name} scored ${score}!</i></strong>
+                </span
+                <span class="muted">
+                    ${new Date().toLocaleString()}
+                </span>
+            <div>
+                `;
+    messages.innerHTML += content;
+  };
+
+  socketio.on("initGame", (data) => {
+    console.log("byeee")
+    createStartGameMessage(data.name, data.game);
+  });
+
+  socketio.on("message", (data) => {
+    console.log("hiiii")
+    createMessage(data.name, data.message);
+  });
+
+  socketio.on("reportScore", (data) => {
+    createGameMessage(data.name, data.score);
+  });
+
+  const sendMessage = () => {
+    console.log("send");
+    const message = document.getElementById("message");
+    if (message.value == "") return;
+    socketio.emit("message", { data: message.value });
+    message.value = "";
+  };
+
+  function dropdown() {
+    document.getElementById("myDropdown").classList.toggle("show");
+  };
+
+  function init2048() {
+    console.log("2048 starting");
+    socketio.emit("initGame", { game: "2048" });
+  };
+
+  window.onclick = function (event) {
+    if (!event.target.matches("#dropbtn")) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains("show")) {
+          openDropdown.classList.remove("show");
+        }
+      }
+    }
+  };
+</script>
+{% for msg in messages %}
+<script type="text/javascript">
+  createMessage("{{msg.name}}", "{{msg.message}}");
+</script>
+{% endfor %} {% endblock %}
