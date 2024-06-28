@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name = "viewport" content="width=device-width, initial-scale=1">
-        <title>Flask App</title>
+        <title>Webchat&Games</title>
         <link
           rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -41,9 +41,11 @@
           <div class="navbar-nav">
             {% if user.is_authenticated %}
             <a class="nav-item nav-link" id="home" href="/">Home</a>
-            <a class="nav-item nav-link" id="notes-page" href="/notes">Notes</a>
-            <a class="nav-item nav-link" id="key-page" href="/passwords">Keys</a>
+            <a class="nav-item nav-link" id="games" href="/games/2048">Games</a>
+            <a class="nav-item nav-link" id="highscores" href="/games/highscores">Highscores</a>
             {% else %}
+            <a class="nav-item nav-link" id="home" href="/">Home</a>
+            <a class="nav-item nav-link" id="games" href="/games/2048">Games</a>
             {% endif %}
           </div>
           <div class="navbar-nav ml-auto">

@@ -11,7 +11,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(150), unique=True)
     password = db.Column(db.String(150))
     username = db.Column(db.String(150))
-    hs2048 = db.Column(db.Integer)
+    hs2048 = db.Column(db.Integer, default=0, nullable=False)
 
     def to_json(self):
         return {

@@ -79,12 +79,10 @@
   };
 
   socketio.on("initGame", (data) => {
-    console.log("byeee")
     createStartGameMessage(data.name, data.game);
   });
 
   socketio.on("message", (data) => {
-    console.log("hiiii")
     createMessage(data.name, data.message);
   });
 

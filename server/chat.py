@@ -55,20 +55,6 @@ def home():
         
     return render_template("home.html", user=current_user)
 
-@chat.route("/games/2048")
-def game2048():
-    return render_template("2048.html", user=current_user)
-
-@chat.route("/games/2048/score", methods=["POST"])
-def score2048():
-    score = request.json.get("score")
-    if current_user.is_authenticated:
-        current_user.hs2048 = score
-    
-    name = session.get("name")
-    socketio.emit("reportScore", {"score": score, "name": name})
-    return jsonify({"message": "recieved"})
-
 @chat.route('/room')
 def room():
     room = session.get("room")
@@ -101,7 +87,7 @@ def initGame(data):
         "name": session.get("name"),
         "game": data["game"]
     }
-    socketio.emit('initGame', content)
+    socketio.emit('initGame', content, to=room)
     rooms[room]["messages"].append({"name": session.get("name"), "message": "EXPIRED GAMELINK"})
     print(f"{session.get("name")} started: {data['game']}")
 

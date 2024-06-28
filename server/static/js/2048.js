@@ -82,13 +82,16 @@ const gameOverCheck = () => {
     overText.classList.remove("hide");
     result.innerText = `Final score: ${score}`;
     startButton.innerText = "Restart Game";
-    reportScore()
+    console.log(window.valueFromJinja)
+    reportScore(window.valueFromJinja)
+    window.valueFromJinja = "N/A"
   }
 };
 
-const reportScore = async () => {
+const reportScore = async (room) => {
     const data = {
-        score
+        score: score,
+        room: room
     }
     const options = {
         method: "POST",
@@ -322,6 +325,7 @@ const startGame = () => {
 };
 
 startButton.addEventListener("click", () => {
+  
   startGame();
   swipeDirection = "";
 });

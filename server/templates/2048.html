@@ -28,6 +28,9 @@
       <button id="start-button">Start Game</button>
     </div>
     <!-- Script -->
+    <script>
+      window.valueFromJinja = "{{room}}";
+    </script>
     <script src="{{ url_for('static', filename='js/2048.js') }}"></script>
   </body>
 </html>

@@ -22,8 +22,10 @@ def create_app():
 
     from server.auth import auth
     from server.chat import chat
+    from server.games import games
     app.register_blueprint(auth, url_prefix='/')
     app.register_blueprint(chat, url_prefix='/')
+    app.register_blueprint(games, url_prefix='/')
 
     from .models import User
     login_manager.login_view = 'auth.login'

@@ -5,12 +5,22 @@
     <h3>Enter the Chat Room</h3>
     <div>
         <label>Name:</label>
+        {% if user.is_authenticated %}
+        <input 
+            type="text" 
+            placeholder="{{user.username}}" 
+            name="name"
+            value="{{user.username}}"
+            readonly
+            />
+        {% else %}
         <input 
             type="text" 
             placeholder="Enter Name!" 
             name="name"
             value="{{name}}"
             />
+        {% endif %}
     </div>
     <div class="join">
         <input 
