@@ -10,4 +10,5 @@ Purpose: A real time webchat to connect with friends or strangers to chat or pla
 - Javascript to handle all minigame logics
 - Fetch and backend api to recieve POST/GET requests
 
+Click to watch Demo Video
 [![Watch the video](https://raw.githubusercontent.com/ivanpan0626/Webchat-Games/main/WebchatDemoIMG.jpg)](https://youtu.be/PAIZw-Od5Sg)
