@@ -9,3 +9,5 @@ Purpose: A real time webchat to connect with friends or strangers to chat or pla
 - Real time updates for chat rooms using Socketio
 - Javascript to handle all minigame logics
 - Fetch and backend api to recieve POST/GET requests
+
+- [![Watch the video](https://raw.githubusercontent.com/ivanpan0626/Webchat-Games/main/WebchatDemo.mp4)](https://raw.githubusercontent.com/ivanpan0626/Webchat-Games/main/WebchatDemo.mp4)
