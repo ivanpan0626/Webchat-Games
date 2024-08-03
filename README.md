@@ -2,13 +2,16 @@
 
 Inspired by Gamepigeon on Imessages
 
-A webapp created using Flask and Jinja2 styling with JS+HTML+CSS. <br>
-Purpose: A real time webchat to connect with friends or strangers to chat or play webgames such as your classic 2048, connect4, etc. 
+A web application created using Flask and Jinja2 with styling through JavaScript, HTML, and CSS. The purpose of this webapp is to provide a real-time platform for users to connect with friends or strangers, chat, and play classic web games like 2048 and Connect4.
 
-- Cookie authentication system using Flask_login and sessions
-- Real time updates for chat rooms using Socketio
-- Javascript to handle all minigame logics
-- Fetch and backend api to recieve POST/GET requests
+# Skills Utilized
+- Programming Languages: Python
+- Fetch API: POST, GET Requests
+- Web Development: Flask, Jinja2, HTML, CSS, JavaScript
+- Database Management: SQLAlchemy, PostgreSQL, Flask-Sessions
+- User Authentication: Cookies, Flask-Login, Flask-Sessions
+- Real-Time Communication: Flask-SocketIO
+- Version Control: Git, GitHub
 
-Click to watch Demo Video
+# Click to watch Demo Video
 [![Watch the video](https://raw.githubusercontent.com/ivanpan0626/Webchat-Games/main/WebchatDemoIMG.jpg)](https://youtu.be/PAIZw-Od5Sg)
